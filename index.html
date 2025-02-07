@@ -1,0 +1,41 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>連想ゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- スタート画面 -->
+        <div id="start-screen" class="screen">
+            <h1>連想ゲーム</h1>
+            <button onclick="startGame()">スタート</button>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div id="timer">残り時間: 100秒</div>
+                <div id="score">得点: 0</div>
+            </div>
+            <div id="word-hint" class="hint-box"></div>
+            <div class="button-container">
+                <button onclick="handleCorrect()" class="correct-btn">正解!</button>
+                <button onclick="handleSkip()" class="skip-btn">スキップ</button>
+            </div>
+        </div>
+
+        <!-- 結果画面 -->
+        <div id="result-screen" class="screen hidden">
+            <h2>ゲーム終了!</h2>
+            <div id="final-score"></div>
+            <div id="skipped-words"></div>
+            <button onclick="restartGame()">もう一度プレイ</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
