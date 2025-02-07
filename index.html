@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- index.html の修正版 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +12,7 @@
         <!-- スタート画面 -->
         <div id="start-screen" class="screen">
             <h1>連想ゲーム</h1>
+            <p>表示された単語を説明して、相手に当ててもらおう！</p>
             <button onclick="startGame()">スタート</button>
         </div>
 
@@ -21,7 +22,10 @@
                 <div id="timer">残り時間: 100秒</div>
                 <div id="score">得点: 0</div>
             </div>
-            <div id="word-hint" class="hint-box"></div>
+            <div class="word-container">
+                <h2>お題</h2>
+                <div id="current-word" class="word-box"></div>
+            </div>
             <div class="button-container">
                 <button onclick="handleCorrect()" class="correct-btn">正解!</button>
                 <button onclick="handleSkip()" class="skip-btn">スキップ</button>

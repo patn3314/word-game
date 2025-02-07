@@ -1,8 +1,14 @@
-// script.js
+// script.js の修正版
 const words = [
-    { word: "りんご", hint: "赤くて丸い果物" },
-    { word: "電車", hint: "線路の上を走る乗り物" },
-    { word: "傘", hint: "雨の日に使う道具" },
+    "りんご",
+    "電車",
+    "傘",
+    "スマートフォン",
+    "エアコン",
+    "テレビ",
+    "ノートパソコン",
+    "カメラ",
+    "冷蔵庫",
     // ... 他の単語を追加
 ];
 
@@ -18,13 +24,16 @@ function showScreen(screenId) {
 }
 
 function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    return words[randomIndex];
+    const remainingWords = words.filter(word => 
+        !skippedWords.includes(word) && word !== currentWord
+    );
+    if (remainingWords.length === 0) return words[Math.floor(Math.random() * words.length)];
+    return remainingWords[Math.floor(Math.random() * remainingWords.length)];
 }
 
 function updateWord() {
     currentWord = getRandomWord();
-    document.getElementById('word-hint').textContent = currentWord.hint;
+    document.getElementById('current-word').textContent = currentWord;
 }
 
 function startGame() {
@@ -61,12 +70,11 @@ function endGame() {
     
     document.getElementById('final-score').textContent = `最終得点: ${score}点`;
     
-    const skippedList = skippedWords.map(word => 
-        `${word.word}（${word.hint}）`
-    ).join('<br>');
+    const skippedList = skippedWords.length > 0 
+        ? `<h3>スキップした単語:</h3>${skippedWords.join('<br>')}`
+        : '';
     
-    document.getElementById('skipped-words').innerHTML = 
-        `<h3>スキップした単語:</h3>${skippedList}`;
+    document.getElementById('skipped-words').innerHTML = skippedList;
 }
 
 function restartGame() {
